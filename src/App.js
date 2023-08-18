@@ -33,8 +33,8 @@ function App() {
       <hr/>
       <H1 label={total}/>
       <hr/>
-      <Input type="number" placeholder="Enter a number" onChange={(e)=>  setFirstNumber(Number(e.target.value))} value={firstNumber}/>
-      <Input type="number" placeholder="Enter a number"  onChange={(e)=>  setSecondNumber(Number(e.target.value))} value={secondNumber}/>
+      <Input type="number" placeholder="Enter your first number" onChange={(e)=>  setFirstNumber(Number(e.target.value))} value={firstNumber}/>
+      <Input type="number" placeholder="Enter your second number"  onChange={(e)=>  setSecondNumber(Number(e.target.value))} value={secondNumber}/>
       <hr/>
       <Button label={"add"} onClick={()=> clickCalculate("+")}/>
       <Button label={"subtract"} onClick={()=> clickCalculate("-")}/>
