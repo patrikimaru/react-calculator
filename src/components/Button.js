@@ -1,3 +1,3 @@
-export const Button = ({label, onClick}) => <button onClick={onClick}>{label}</button>;
+export const Button = ({children, onClick}) => <button onClick={onClick}>{children}</button>;
 
 

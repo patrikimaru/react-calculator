@@ -1,1 +1,1 @@
-export const H1 = ({label}) => <h1 className="input">{label}</h1>;
+export const H1 = ({children}) => <h1 className="input">{children}</h1>;

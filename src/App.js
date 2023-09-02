@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import { H1 } from "./components/H1";
+import { SlCalculator } from "react-icons/sl";
 
 function App() {
   const [total, setTotal ] = useState(0);
@@ -9,36 +10,63 @@ function App() {
   const [secondNumber, setSecondNumber] = useState();
 
   const clickCalculate = (symbol)=> {
-    switch (symbol){
-      case "+":
-        return setTotal(firstNumber + secondNumber);
-      case "-":
-        return setTotal(firstNumber - secondNumber);
-      case "*":
-        return setTotal(firstNumber * secondNumber);
-      case "/":
-        return setTotal(firstNumber / secondNumber);
-      default:
-        return "invalid please try again";
+    try {
+      let results;
+      switch (symbol){
+        case "+":
+          results = firstNumber + secondNumber;
+          break;
+        case "-":
+          results = firstNumber - secondNumber;
+          break;
+        case "*":
+          results = firstNumber * secondNumber;
+          break;
+        case "/":
+          results = secondNumber !== 0 ? firstNumber / secondNumber : "Cannot divide by zero";
+          break;
+        default:
+          results = "invalid please try again";
+          break;
+      }
+      setTotal(results);
+    } catch (error) {
+      alert(error);
     }
   }
   
 
 
   return (
-    <>
-      <H1 label="A simple calculator"/>
-      <hr/>
-      <H1 label={total}/>
-      <hr/>
-      <Input type="number" placeholder="Enter your first number" step={0.25} onChange={(e)=>  setFirstNumber(Number(e.target.value))} value={firstNumber}/>
-      <Input type="number" placeholder="Enter your second number" step={0.25} onChange={(e)=>  setSecondNumber(Number(e.target.value))} value={secondNumber}/>
-      <hr/>
-      <Button label="add" onClick={()=> clickCalculate("+")}/>
-      <Button label="subtract" onClick={()=> clickCalculate("-")}/>
-      <Button label="divide" onClick={()=> clickCalculate("/")}/>
-      <Button label="multiply" onClick={()=> clickCalculate("*")}/>
-    </>
+    <div className="card">
+      <H1>
+        <SlCalculator />
+        React Calculator
+      </H1>
+      <H1>{total}</H1>
+      <label>First Number</label>
+      <Input 
+        type="number" 
+        defaultValue={firstNumber}
+        placeholder="Enter your first number" 
+        onChange={(e)=>  setFirstNumber(Number(e.target.value))} 
+        required
+      />
+      <label>Second Number</label>
+      <Input 
+        type="number" 
+        defaultValue={secondNumber}
+        placeholder="Enter your second number"  
+        onChange={(e)=>  setSecondNumber(Number(e.target.value))}
+        required
+      />
+      <Button onClick={()=> clickCalculate("+")}>
+        Add
+      </Button>
+      <Button onClick={() => clickCalculate("-")}>Subtract</Button>
+      <Button onClick ={() =>clickCalculate("*")}>Multiply</Button>
+      <Button onClick={() => clickCalculate("/")}>Divide</Button>
+    </div>
   );
 }
 
