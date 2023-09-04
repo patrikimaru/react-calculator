@@ -1,2 +1,11 @@
-export const Input = ({type,placeholder, onChange, defaultValue, step}) => 
-<input type={type} step={step} placeholder={placeholder} onChange={onChange} defaultValue={defaultValue} required/>;
+const Input = (props) => 
+  <input 
+    type={props.type} 
+    step={props.step} 
+    placeholder={props.placeholder} 
+    defaultValue={props.defaultValue} 
+    onChange={props.onChange} 
+    required
+  />;
+
+export default Input;

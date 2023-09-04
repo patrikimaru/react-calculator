@@ -1,3 +1,5 @@
-export const Button = ({children, onClick}) => <button onClick={onClick}>{children}</button>;
+const Button = (props) => <button onClick={props.onClick}>{props.children}</button>;
+
+export default Button;
 
 

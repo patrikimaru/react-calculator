@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Button } from "./components/Button";
-import { Input } from "./components/Input";
-import { H1 } from "./components/H1";
 import { SlCalculator } from "react-icons/sl";
+import Button from "./components/Button";
+import Input from "./components/Input";
+import H1 from "./components/H1";
 
 function App() {
   const [total, setTotal ] = useState(0);
